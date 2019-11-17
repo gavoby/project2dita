@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA General Task//EN" "generalTask.dtd">
+<task id="Pancakes">
+    <title>How To Make Pancakes</title>
+    <shortdesc>This document will show you how to make pancakes using a frying pan.</shortdesc>
+    <taskbody>
+        <context>
+          When you've finished reading this document you will know how to make delicious pancakes
+        </context>
+        <prereq>
+            You will need a good mixing bowl
+        </prereq>
+        <steps>
+         
+            <step importance="required">
+                <cmd>Measure out 4oz of flour and add to a mixing bowl</cmd>
+                <choices>
+                    <choice>Use white flour if you have no allergies</choice>
+                    <choice>Use gluen free flour if you are allergic to gluten</choice>
+                </choices>
+            </step>
+            <step importance="required">
+                <cmd>Add 1oz of butter</cmd>
+                <choicetable>
+                    <chhead>
+                        <choptionhd>Type</choptionhd>
+                        <chdeschd>Amount</chdeschd>
+                    </chhead>
+                    <chrow>
+                        <choption>Real</choption>
+                        <chdesc>1oz</chdesc>
+                    </chrow>
+                    <chrow>
+                        <choption>Fake</choption>
+                        <chdesc>2oz</chdesc>
+                    </chrow>
+                </choicetable>
+            </step>
+            <step importance="required">
+                <cmd>Add 2 eggs</cmd>
+                <stepxmp>2 larger eggs work best</stepxmp>
+                <substeps>
+                    <substep>
+                        <cmd>Crack the eggs off the side if your bowl</cmd>
+                    </substep>
+                    <substep>
+                        <cmd>Carefully pour the egg contents into your mixture</cmd>
+                    </substep>
+                </substeps>
+                <steptroubleshooting>Be sure no shell from your egg is in your mixture</steptroubleshooting>
+            </step>
+            <step importance="optional">
+                <cmd>Add a dash of lime to flavour</cmd>
+                <info>A fresh lemon is better, but you can use juice if you do not have a fresh lemon</info>
+            </step>
+            <step importance="required">
+                <cmd>Add 300ml of milk and mix everything</cmd>
+                <stepresult>The mixture shoukd not be thick and smooth</stepresult>
+            </step>
+            
+        </steps>
+        <result>The Pancake is now ready to eat</result>
+        <postreq>Be sure to clean up after you</postreq>
+        
+       
+    </taskbody>
+    
+</task>
