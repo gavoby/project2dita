@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA General Task//EN" "generalTask.dtd">
+<task id="ProductLibrary1">
+    <title >IBM StoredIQ product library</title>
+    <shortdesc></shortdesc>
+    <taskbody>
+        <context>
+            <p>The following documents are available in the IBM® StoredIQ® product library.
+            </p>
+        </context>
+        <steps-unordered>
+            <step >
+                <cmd><i>IBM StoredIQ Overview Guide</i></cmd>
+            </step>
+            <step>
+                <cmd><i>IBM StoredIQ Deployment and Configuration Guide</i></cmd>
+            </step>
+            <step>
+                <cmd><i>IBM StoredIQ Data Server Administration Guide</i></cmd>
+            </step>
+            <step>
+                <cmd><i>IBM StoredIQ Administrator Administration Guide</i></cmd>
+            </step>
+            <step>
+                <cmd><i>IBM StoredIQ Data Workbench User Guide</i></cmd>
+            </step>
+            <step>
+                <cmd><i>IBM StoredIQ Policy Manager User Guide</i></cmd>
+            </step>
+            <step>
+                <cmd><i>IBM StoredIQ Insights User Guide</i></cmd>
+            </step>
+            <step>
+                <cmd><i>IBM StoredIQ Integration Guide</i></cmd>
+            </step>
+        </steps-unordered>
+        
+    </taskbody>
+</task>
