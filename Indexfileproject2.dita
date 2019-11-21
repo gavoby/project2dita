@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA General Task//EN" "generalTask.dtd">
+<task id="task_u1y_jmm_5jb">
+    <title>Contents</title>
+    <shortdesc/>
+    <prolog>
+        <metadata>
+            <keywords>
+                <indexterm>About this publication
+                    
+                    <index-see-also>IBM StoredIQ product library</index-see-also>
+                    <index-see-also>Contacting IBM StoredIQ customer support</index-see-also>
+                </indexterm>
+                <indexterm>AIBM StoredIQ components
+                    <index-see-also>Solution components</index-see-also>
+                    <index-see-also>Applications of IBM StoredIQ</index-see-also>
+                </indexterm>
+                <indexterm>Planning for deployment.
+                 
+                    <index-see-also>Open Virtual Appliance (OVA) configuration requirements</index-see-also>
+                    <index-see-also>Network and port requirements</index-see-also>
+                    <index-see-also>Environment sizing guidelines</index-see-also>
+                    <index-see-also>Stack-provisioning prerequisites</index-see-also>
+                    <index-see-also>License usage metrics.</index-see-also>
+                    <index-see-also>Security</index-see-also>
+                   
+                </indexterm>
+                <indexterm>
+                    <index-see-also>Deploying the virtual appliances</index-see-also>
+                    <index-see-also>Deploying IBM StoredIQ on Microsoft Hyper-V</index-see-also>
+                </indexterm>
+            </keywords>
+        </metadata>
+    </prolog>
+</task>
+
