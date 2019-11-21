@@ -1,10 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
-<concept id="ConIBM">
-    <title>About this publication</title>
-    <shortdesc>IBM StoredIQ Deployment and Configuration Guide provides information about how to plan, deploy, and configure the IBM StoredIQ product.</shortdesc>
-    <conbody>
-        <p>       
-        </p>
-    </conbody>
-</concept>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA General Task//EN" "generalTask.dtd">
+<task id="contactIBM">
+    
+    <title>Contacting IBM StoredIQ customer support</title>
+    <shortdesc>For IBM StoredIQ technical support or to learn about available service options, contact IBM StoredIQ customer support at this phone number:</shortdesc>
+    <taskbody>
+        
+        <context>
+            <p>
+            </p>
+        </context>
+        <steps-unordered>
+            <step>
+                <cmd>1-866-227-2068</cmd>
+            </step>
+        </steps-unordered>
+        <result>Or, see the Contact IBM web site at http://www.ibm.com/contact/us/.</result>
+        <postreq><b>IBM Knowledge Center</b></postreq>
+        <postreq>The IBM StoredIQ documentation is available in IBM Knowledge Center.</postreq>
+        
+    </taskbody>
+</task>
