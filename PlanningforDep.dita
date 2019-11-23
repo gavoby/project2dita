@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="concept_0">
+    <title>Planning for deployment</title>
+    <shortdesc></shortdesc>
+    <conbody>
+        <p>When you plan a deployment of IBM StoredIQ, evaluate several infrastructure considerations.</p>
+        <p>In addition to the information in this section, review the requirements detailed in the IBM Software Product Compatibility Reports (SPCR) tool at: <xref href="https://www.ibm.com/software/reports/compatibility/clarity-reports/report/html/softwareReqsForProduct?deliverableId=CC1291B0F4AF11E3ACBD4447721DA353" scope="external" format="html">Software Product Compatibility Reports: StoredIQ 7.6</xref></p>
+        <p>If you plan to use IBM StoredIQ for Legal Identification and Collection to create and manage data boxes and data requests that are to be fulfilled by IBM StoredIQ, also check the system requirements for StoredIQ for Legal at: <xref href="https://www.ibm.com/software/reports/compatibility/clarity-reports/report/html/softwareReqsForProduct?deliverableId=8A0331A0C50D11E58D9C0D684F363D68" scope="external" format="html">Software Product Compatibility Reports: StoredIQ for Legal 2.0.3</xref> </p>
+        <p><b>
+            Generate customized reports with the SPCR tool</b></p>
+        <p>Go to the page at <xref href="https://www.ibm.com/software/reports/compatibility/clarity/index.html" scope="external" format="html">Software Product Compatibility Reports</xref> to create a high-level report for supported operating systems, related software, hypervisors, and supported translations for any product. You can also create an in-depth report to get detailed system requirements, hardware requirements, and end of service information for each product. You can search for a product in all of the report types and reports are generated based on your query values.</p>
+        <p>The following report types are the most commonly generated reports from software product compatibility reports:</p>
+        <p><b>Detailed system requirements</b></p>
+        <p>When you select your product version for the detailed system requirements report, you can set a report filter for <b>Operating system platforms, Product components</b>, and <b>Capabilities</b>, including prerequisites and support software. After you view the report, you can save it as a URL to generate anytime or download it as a PDF.</p>
+        <p><b>Hardware requirements</b></p>
+        <p>When you select your product version for the hardware requirements report, you can set a report filter by the <b>Operating system families</b> option. Set the operating system filter by selecting some or all of the operating systems that are supported by your product. After you view the report, you can save it as a URL to generate anytime or download it as a PDF.</p>
+        <p><b>End of service</b></p>
+        <p>The end of service report shows the service window of the products that you specify over an eight- year span. For example, you can find out when your product is scheduled to go out of service.</p>   
+    </conbody>
+    
+<concept id="concept_1">
+    <title>Open Virtual Appliance (OVA) configuration requirements</title>
+    <shortdesc></shortdesc>
+    <conbody>
+        <p>IBM StoredIQ is deployed as virtual appliances and is supported in VMware ESXi 5.0 (all fix pack levels) or VMware ESXi 6.0 (all fix pack levels) environments. You must have a virtual infrastructure that meets the IBM StoredIQ hardware requirements.</p>
+        <p><b>Application stack</b></p>
+        <ul>
+            <li>vCPU: 2</li>
+            <li>Memory: 4 GB</li>
+            <li>Storage:
+            <sl>
+                <sli>- Primary disk (vmdisk1): 21 GB</sli>
+                <sli>- Data disk (vmdisk2): 10 GB</sli>
+            </sl>
+            </li>
+        </ul>
+        <p><b>Gateway server</b></p>
+        <ul>
+            <li>vCPU: 4</li>
+            <li>Memory: 8 GB</li>
+            <li>Storage:
+                <sl>
+                    <sli>– Primary disk (vmdisk1): 100 G</sli>
+                    <sli>– Data disk (vmdisk2): 75 GB</sli>
+                    <sli>– Swap disk (vmdisk3): 40 - 100 GB</sli>
+                </sl>
+            </li>
+        </ul>
+        <p><b>DataServer - Classic</b></p>
+         <ul>
+           <li>vCPU: 4</li>
+         </ul>
+        <p>Even though increasing the number of vCPUs increases performance, the actual benefits depend on whether the specific host is oversubscribed or not.</p>
+         <ul>
+            <li>Memory: 16 GB</li>
+         </ul>
+        <p>While the minimum value works under light-load condition, as the load increases, the data server quickly starts using swap space. For high load situations, increasing RAM beyond 16 GB can benefit performance. Monitoring swap usage can provide insight.</p>
+         <ul>
+          <li>Storage:
+           <sl>
+               <sli>– Primary disk (vmdisk1, SCSI 0:0): Default is 150 GB</sli>
+           </sl>
+          </li>
+         </ul>
+        <p>This virtual disk has an associated VMDK that contains the IBM StoredIQ operating code. Do not change its size.</p>
+        <hazardstatement type="attention">
+            <messagepanel>
+                <typeofhazard ></typeofhazard>
+                <howtoavoid>If you delete the primary disk, you delete the operating system, and the IBM StoredIQ software; the virtual machine might need to be scrapped.</howtoavoid>
+            </messagepanel>
+        </hazardstatement>
+        <sl>
+            <sli>– Data disk (vmdisk2, SCSI 0:1): Default is 2 TB</sli>
+            <sli>When under load, the data server can use much RAM; therefore, having ample swap space is prudent. The minimum swap size is equal to the amount of RAM configured for the virtual machine. For best performance under load, place this disk on the highest speed data store available to the host.</sli>
+        </sl>
+        <p>The general size limits for a data server are 150 million objects or 500 defined volumes, whichever limit is reached first. Assuming an average object size of 200 KB equals about 30 TB of managed storage across 30 volumes of 5 million objects each, the index storage requirement for metadata on ~30 TB of storage that contains uncompressed general office documents is ~330 GB (11 GB per TB). Add 100 GB per TB of managed storage for full-text or snippet index. For example, to support 30 TB of storage that is indexed for metadata, you need 8 TB indexed for full-text search and extracted text (snippet cache) of 8 TB for auto-classification. A total of 1.9 TB of storage is required (metadata: 330 GB, full-text: 800 GB, snippet cache: 800 GB).</p>
+        <p>Data-server performance is impacted by the IOPS available from the storage subsystem. For each data server under maximum workload, at least 650 IOPS generally delivers acceptable performance. In the situations where there is a high load on the system, the IOPS that is used can reach up to 7000 with main write operations.</p>
+        <p><b>DataServer - Distributed</b></p>
+        <ul>
+            <li>vCPU: 4</li>
+            <li>Memory: 16 GB</li>
+            <li>Storage:
+                <sl>
+                    <sli>– Primary disk (vmdisk1, SCSI 0:0): Default is 150 GB</sli>
+                    <sli>– Data disk (vmdisk2, SCSI 0:1): Default is 2 TB</sli>
+                    <sli>– Swap disk (vmdisk3, SCSI 0:2): Default is 40 GB</sli>
+                </sl>
+            </li>
+        </ul>
+        <p>If you deploy this type of data server, you must also deploy an Elasticsearch cluster with at least one node. If you deploy a cluster with more nodes, each of the Elasticsearch nodes must meet the listed requirements.</p>
+        <p><b>
+            Each Elasticsearch node</b></p>
+        <ul>
+            <li>vCPU: 1</li>
+            <li>Memory: 32 GB</li>
+            <li>Storage:
+                <sl>
+                    <sli>– Primary disk (vmdisk1): 100 GB</sli>
+                    <sli>– Data disk (vmdisk2): 1 TB</sli>
+                </sl>
+            </li>
+        </ul>
+        <p>The required memory depends on the index size that is handled by the data node. For a better performance, consider increasing the memory. The total memory available to the node must be distributed between the host operating system, the Elasticsearch java heap space, and the kernel file system caches. For example, if the system has 32 GB memory, 2 GB must be allocated for the host operating system, 15 GB for the java heap space, and the remaining 15 GB for the file system caches.</p>
+        <p>The data disk (vmdisk2) can be resized according to expectations on the amount of harvest data to be stored.</p>
+    </conbody>
+</concept>
+
+<concept id="concept_2">
+    <title>Network and port requirements</title>
+    <shortdesc></shortdesc>
+    <conbody>
+        <p>For proper communication, the IBM StoredIQ components must be able to connect to each other.</p>
+        <p>You must enable network connectivity from the following locations:</p>
+        <ul>
+            <li>The data server IP address to the gateway IP address on port 11103</li>
+            <li>The data server IP address to the gateway IP address on port 11103</li>
+            <li>The gateway IP address to and from the application stack IP address on port 8765 and 5432</li>
+            <li>Ports 80, 443, and 22 from the administrative workstation to the application stack and data server IP addresses</li>
+            <li>Port 22 from the administrative workstation to the gateway IP address.</li>
+        </ul>
+        <p><b>TCP: port ranges for the firewall</b></p>
+        
+            <sl>
+                <sli>To ensure the network access for desktop volumes, the following port ranges must be open through a firewall.</sli>
+            </sl>
+        <ul>
+            <li>21000-21004</li>
+            <li>21100-21101</li>
+            <li>21110-21130</li>
+            <li>21200-21204</li>
+        </ul>
+              
+      
+        <p><b>Default open ports</b></p>
+       <sl>
+           <sli>The following ports are open by default on the IBM StoredIQ.</sli>
+       </sl>
+        
+        
+    </conbody>
+</concept>
+</concept>
